@@ -1,0 +1,24 @@
+﻿@page "/footballplayerdetail/{id}"
+@inherits FootballPlayerDetailBase
+
+<h3>FootballPlayerDetail</h3>
+
+@if (FootballPlayer != null)
+{
+    <div class="card" style="width: 18rem;">
+        <img src="@FootballPlayer.Photo" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">@FootballPlayer.FullName</h5>
+
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Nationality: @FootballPlayer.Nationality</li>
+            <li class="list-group-item">Date Of Birth: @FootballPlayer.DateOfBirth.ToString("dd-MM-yyyy")</li>
+            <li class="list-group-item">Position: @Position.PosiotionName</li>
+        </ul>
+        <div class="card-body">
+            <a href="/" class="btn btn-primary">Back</a>
+            <a href="@($"/editfootballplayer/{FootballPlayer.FootballPlayerId}")" class="btn btn-primary">Edit</a>
+        </div>
+    </div>
+}

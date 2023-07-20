@@ -1,0 +1,23 @@
+﻿@page "/"
+@inherits ListFootballPlayersBase
+
+<h3>ListFootballPlayers</h3>
+
+@if (FootballPlayers != null)
+{
+    <div class="row">
+        @foreach (var footballPlayer in FootballPlayers)
+        {
+            <div class="card" style="width: 18rem;">
+                <img src="@footballPlayer.Photo" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">@footballPlayer.FullName</h5>
+
+                    <a href="@($"/footballplayerdetail/{footballPlayer.FootballPlayerId}")" class="btn btn-primary">View</a>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+

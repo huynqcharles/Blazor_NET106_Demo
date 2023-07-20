@@ -1,0 +1,26 @@
+﻿@page "/editfootballplayer/{id}"
+@inherits EditFootballPlayerBase
+
+<h3>EditFootballPlayer</h3>
+
+<EditForm Model="@FootballPlayer" OnValidSubmit="HandleSubmitForm">
+    <div class="form-group row">
+        <label for="fullName" class="form-label">Full Name</label>
+        <InputText id="fullName" class="form-control" @bind-Value="FootballPlayer.FullName" />
+
+        <label for="nationality" class="form-label">Nationality</label>
+        <InputText id="nationality" class="form-control" @bind-Value="FootballPlayer.Nationality" />
+
+        <label for="dob" class="form-label">Date Of Birth</label>
+        <InputDate id="dob" class="form-control" @bind-Value="FootballPlayer.DateOfBirth" />
+
+        <label for="position" class="form-label">Position</label>
+        <InputSelect id="position" class="form-control" @bind-Value="FootballPlayer.PositionId">
+            @foreach (var position in Positions)
+            {
+                <option value="@position.PositionId">@position.PosiotionName</option>
+            }
+        </InputSelect>
+    </div>
+    <button class="btn btn-primary" type="submit">Save</button>
+</EditForm>

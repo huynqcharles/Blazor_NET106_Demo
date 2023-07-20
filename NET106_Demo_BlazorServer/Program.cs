@@ -1,13 +1,23 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
-using NET106_Demo_BlazorServer.Data;
+using NET106_Demo_BlazorServer.IServices;
+using NET106_Demo_BlazorServer.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<WeatherForecastService>();
+
+builder.Services.AddHttpClient<IFootballPlayerService, FootballPlayerService>(client =>
+{
+    client.BaseAddress = new Uri("https://localhost:7238/");
+});
+
+builder.Services.AddHttpClient<IPositionService, PositionService>(client =>
+{
+    client.BaseAddress = new Uri("https://localhost:7238/");
+});
 
 var app = builder.Build();
 
